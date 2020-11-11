@@ -44,6 +44,7 @@ public class DummyController {
             }
             Identification id = new Identification("jean", 22, "esib");
             SOSResponse<Identification> response = new SOSResponse<>("SUCCESS" , "CREATED" , id);
+
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         }
         catch (IllegalAccessException e){
