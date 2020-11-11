@@ -1,4 +1,4 @@
-package com.sosesib.backend;
+package com.sosesib.backend.controllers;
 
 import com.sosesib.backend.models.Identification;
 import com.sosesib.backend.models.RandomRange;
