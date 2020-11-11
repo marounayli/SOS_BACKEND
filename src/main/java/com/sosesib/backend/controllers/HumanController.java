@@ -19,8 +19,8 @@ public class HumanController {
     }
 
     @GetMapping("")
-    public void getAllHumans(){
-        humanRepository.save(new Human("xcz","pepehands","pepehands",10));
+    public Iterable<Human> getAllHumans(){
+        return humanRepository.findAll();
     }
 
     @GetMapping("/{id}")
