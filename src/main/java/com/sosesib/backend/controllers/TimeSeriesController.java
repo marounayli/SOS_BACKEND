@@ -3,10 +3,7 @@ package com.sosesib.backend.controllers;
 import com.sosesib.backend.models.Aggregation;
 import com.sosesib.backend.models.TimeSeries;
 import com.sosesib.backend.services.TimeSeriesService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public class TimeSeriesController {
         return "Hello";
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/sensId/{Id}")
     public List<TimeSeries> getTimeSeriesBySensorId(@PathVariable Integer Id){
         return timeSeriesService.getBySensorId(Id);
