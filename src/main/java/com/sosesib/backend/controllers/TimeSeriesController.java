@@ -17,6 +17,7 @@ public class TimeSeriesController {
         this.timeSeriesService = timeSeriesService;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("")
     public String Hello(){
         return "Hello";
@@ -28,11 +29,13 @@ public class TimeSeriesController {
         return timeSeriesService.getBySensorId(Id);
     }
 
-        @GetMapping("/sum/sensId/{Id}/{size}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/sum/sensId/{Id}/{size}")
     public List<Aggregation<Double>> getAggregationSum(@PathVariable Integer Id, @PathVariable Integer size){
         return timeSeriesService.aggregationSum(size,Id);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/prod/sensId/{Id}/{size}")
     public List<Aggregation<Double>> getAggregationProd(@PathVariable Integer Id, @PathVariable Integer size){
         return timeSeriesService.aggregationProd(size,Id);
