@@ -30,9 +30,13 @@ public class TimeSeriesController {
         return timeSeriesService.getBySensorId(Id);
     }
 
-    @GetMapping("/sensId/{Id}/{size}")
-    public List<Aggregation> getAggregationBySizeAndSensorId(@PathVariable Integer Id, @PathVariable Integer size){
+        @GetMapping("/sum/sensId/{Id}/{size}")
+    public List<Aggregation<Double>> getAggregationSum(@PathVariable Integer Id, @PathVariable Integer size){
         return timeSeriesService.aggregationSum(size,Id);
+    }
 
+    @GetMapping("/prod/sensId/{Id}/{size}")
+    public List<Aggregation<Double>> getAggregationProd(@PathVariable Integer Id, @PathVariable Integer size){
+        return timeSeriesService.aggregationProd(size,Id);
     }
 }

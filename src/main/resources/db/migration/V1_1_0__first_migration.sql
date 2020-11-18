@@ -1,4 +1,4 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION "uuid-ossp";
 CREATE TABLE timeseries (
     measurement_id uuid PRIMARY KEY,
     sensor_id int,

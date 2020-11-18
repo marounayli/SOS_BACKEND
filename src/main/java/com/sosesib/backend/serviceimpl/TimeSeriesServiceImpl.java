@@ -1,6 +1,7 @@
 package com.sosesib.backend.serviceimpl;
 
 
+import com.sosesib.backend.functional.Aggregator;
 import com.sosesib.backend.models.Aggregation;
 import com.sosesib.backend.models.TimeSeries;
 import com.sosesib.backend.repositories.TimeSeriesRepository;
@@ -26,20 +27,29 @@ public class TimeSeriesServiceImpl implements TimeSeriesService {
     }
 
     @Override
-    public List<Aggregation> aggregationSum(int aggregationSize,int sensorId) {
+    public List<Aggregation<Double>> aggregationSum(int aggregationSize, int sensorId) {
+        return aggregationGenerator(aggregationSize,sensorId, Double::sum,0.0);
+    }
+
+    @Override
+    public List<Aggregation<Double>> aggregationProd(int aggregationSize, int sensorId) {
+        return aggregationGenerator(aggregationSize,sensorId, (x,y)->x*y,1.0);
+    }
+
+    private  List<Aggregation<Double>> aggregationGenerator(int aggregationSize, int sensorId, Aggregator<Double> aggregator , Double aggregatorInitialValue) {
         List<TimeSeries> timeSeries = timeSeriesRepository.findBySensorId(sensorId);
-        List<Aggregation> aggregations = new ArrayList<>();
+        List<Aggregation<Double>> aggregations = new ArrayList<>();
         int seriesSize=timeSeries.size();
         if(seriesSize==0)
             return aggregations;
         int refCounter =0;
         while(refCounter<seriesSize){
             int loopCounter=0;
-            Double aggValue=0.0;
-            Aggregation aggregation = new Aggregation();
+            Double aggValue =aggregatorInitialValue;
+            Aggregation<Double> aggregation = new Aggregation<>();
             aggregation.setLowDate(timeSeries.get(refCounter).getMeasurementDate());
             for(loopCounter=0; loopCounter<aggregationSize;++loopCounter){
-                aggValue+=timeSeries.get(refCounter).getMeasurementValue();
+                aggValue=aggregator.process(aggValue,timeSeries.get(refCounter).getMeasurementValue());
                 refCounter++;
                 if(refCounter==timeSeries.size())
                     break;

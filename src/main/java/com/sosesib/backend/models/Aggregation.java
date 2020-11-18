@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Aggregation {
+public class Aggregation<X> {
     private LocalDateTime lowDate;
     private LocalDateTime highDate;
-    private Double aggregationValue;
+    private X aggregationValue;
 }

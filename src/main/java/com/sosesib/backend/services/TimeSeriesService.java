@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TimeSeriesService {
     public List<TimeSeries> getBySensorId(Integer SensorId);
-    public List<Aggregation> aggregationSum(int aggregationSize, int sensorId);
+    public List<Aggregation<Double>> aggregationSum(int aggregationSize, int sensorId);
+    public List<Aggregation<Double>> aggregationProd(int aggregationSize, int sensorId);
 }
