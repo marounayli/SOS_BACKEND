@@ -1,0 +1,1 @@
+UPDATE location set areacode ='LB'

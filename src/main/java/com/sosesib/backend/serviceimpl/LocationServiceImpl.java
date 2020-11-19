@@ -1,6 +1,6 @@
 package com.sosesib.backend.serviceimpl;
 
-import com.sosesib.backend.models.Location;
+import com.sosesib.backend.models.entities.Location;
 import com.sosesib.backend.repositories.LocationRepository;
 import com.sosesib.backend.services.LocationService;
 import org.springframework.stereotype.Service;

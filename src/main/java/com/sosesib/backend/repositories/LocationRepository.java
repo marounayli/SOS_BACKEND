@@ -1,6 +1,6 @@
 package com.sosesib.backend.repositories;
 
-import com.sosesib.backend.models.Location;
+import com.sosesib.backend.models.entities.Location;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

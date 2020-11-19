@@ -1,4 +1,4 @@
-package com.sosesib.backend.models;
+package com.sosesib.backend.models.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

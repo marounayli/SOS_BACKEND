@@ -1,6 +1,6 @@
 package com.sosesib.backend.services;
 
-import com.sosesib.backend.models.Location;
+import com.sosesib.backend.models.entities.Location;
 
 import java.util.List;
 

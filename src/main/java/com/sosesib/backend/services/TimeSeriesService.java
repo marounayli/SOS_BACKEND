@@ -1,9 +1,8 @@
 package com.sosesib.backend.services;
 
 import com.sosesib.backend.models.Aggregation;
-import com.sosesib.backend.models.TimeSeries;
+import com.sosesib.backend.models.entities.TimeSeries;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TimeSeriesService {

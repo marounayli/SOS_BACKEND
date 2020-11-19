@@ -3,12 +3,11 @@ package com.sosesib.backend.serviceimpl;
 
 import com.sosesib.backend.functional.Aggregator;
 import com.sosesib.backend.models.Aggregation;
-import com.sosesib.backend.models.TimeSeries;
+import com.sosesib.backend.models.entities.TimeSeries;
 import com.sosesib.backend.repositories.TimeSeriesRepository;
 import com.sosesib.backend.services.TimeSeriesService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

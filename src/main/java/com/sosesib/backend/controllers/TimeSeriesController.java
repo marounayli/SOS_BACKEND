@@ -1,7 +1,7 @@
 package com.sosesib.backend.controllers;
 
 import com.sosesib.backend.models.Aggregation;
-import com.sosesib.backend.models.TimeSeries;
+import com.sosesib.backend.models.entities.TimeSeries;
 import com.sosesib.backend.services.TimeSeriesService;
 import org.springframework.web.bind.annotation.*;
 

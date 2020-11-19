@@ -1,6 +1,6 @@
 package com.sosesib.backend.repositories;
 
-import com.sosesib.backend.models.Sensor;
+import com.sosesib.backend.models.entities.Sensor;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

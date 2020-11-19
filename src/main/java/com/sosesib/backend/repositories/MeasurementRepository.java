@@ -1,6 +1,6 @@
 package com.sosesib.backend.repositories;
 
-import com.sosesib.backend.models.Measurement;
+import com.sosesib.backend.models.entities.Measurement;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

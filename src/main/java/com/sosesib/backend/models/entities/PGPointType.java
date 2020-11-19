@@ -1,4 +1,4 @@
-package com.sosesib.backend.models;
+package com.sosesib.backend.models.entities;
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;

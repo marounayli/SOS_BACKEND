@@ -1,5 +1,7 @@
-package com.sosesib.backend.models;
+package com.sosesib.backend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,20 +21,16 @@ public class TimeSeries {
     @Column(name="measurement_id")
     private UUID measurementId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name="sensor_id", insertable = false , updatable = false)
     private Sensor sensor;
 
     @Column(name="sensor_id")
     private Integer sensorId;
 
-    @JsonProperty("sensor")
-    private void createSensor(int sensor_id) {
-        this.sensor = new Sensor();
-        sensor.setSensor_id(sensor_id);
-    }
-
     @Column(name="measurement_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private LocalDateTime measurementDate;
 
     @Column(name="measurement_value",nullable=false)

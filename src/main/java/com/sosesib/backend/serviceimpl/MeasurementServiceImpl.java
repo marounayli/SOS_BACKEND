@@ -1,6 +1,6 @@
 package com.sosesib.backend.serviceimpl;
 
-import com.sosesib.backend.models.Measurement;
+import com.sosesib.backend.models.entities.Measurement;
 import com.sosesib.backend.repositories.MeasurementRepository;
 import com.sosesib.backend.services.MeasurementService;
 import org.springframework.stereotype.Service;

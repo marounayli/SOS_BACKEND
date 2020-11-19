@@ -1,6 +1,5 @@
-package com.sosesib.backend.models;
+package com.sosesib.backend.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

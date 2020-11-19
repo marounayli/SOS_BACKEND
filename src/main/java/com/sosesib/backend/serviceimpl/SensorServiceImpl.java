@@ -1,6 +1,6 @@
 package com.sosesib.backend.serviceimpl;
 
-import com.sosesib.backend.models.Sensor;
+import com.sosesib.backend.models.entities.Sensor;
 import com.sosesib.backend.repositories.SensorRepository;
 import com.sosesib.backend.services.SensorService;
 import org.springframework.stereotype.Service;
