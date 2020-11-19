@@ -1,13 +1,11 @@
 package com.sosesib.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -21,8 +19,16 @@ public class TimeSeries {
     @Column(name="measurement_id")
     private UUID measurementId;
 
-    @Column(name="sensor_id")
-    private Integer sensorId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="sensor_id")
+    private Sensor sensor;
+
+
+    @JsonProperty("sensor")
+    private void createSensor(int sensor_id) {
+        this.sensor = new Sensor();
+        sensor.setSensor_id(sensor_id);
+    }
 
     @Column(name="measurement_date")
     private LocalDateTime measurementDate;
