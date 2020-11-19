@@ -20,9 +20,11 @@ public class TimeSeries {
     private UUID measurementId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="sensor_id")
+    @JoinColumn(name="sensor_id", insertable = false , updatable = false)
     private Sensor sensor;
 
+    @Column(name="sensor_id")
+    private Integer sensorId;
 
     @JsonProperty("sensor")
     private void createSensor(int sensor_id) {

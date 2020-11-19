@@ -1,6 +1,4 @@
-insert into timeseries(sensor_id ,measurement_date,measurement_value) Values(
-    2,
-   generate_series(timestamp '2019-01-01 00:00'
-                     , timestamp '2019-01-02 00:00'
-                     , interval  '1 hour'),
-   random()*(10-5)+0)
+INSERT INTO sensors ( sensor_id, location_id, measurement_id)
+SELECT  3, location.location_id, measurement.measurement_id FROM location, measurement
+ORDER BY RANDOM()
+LIMIT 1
