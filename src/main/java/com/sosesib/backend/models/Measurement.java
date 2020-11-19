@@ -23,11 +23,8 @@ public class Measurement {
     private UUID measurement_id;
 
     @Column(name="type")
-    private PGpoint type;
+    private String type;
 
     @Column(name="measurement_unit")
-    private PGpoint measurement_unit;
-
-
-
+    private String measurement_unit;
 }

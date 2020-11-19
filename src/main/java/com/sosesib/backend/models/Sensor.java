@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Sensor {
     @Id
     @Column(name="sensor_id")
-    private int sensor_id;
+    private Integer sensor_id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")

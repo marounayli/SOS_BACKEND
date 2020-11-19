@@ -1,8 +1,11 @@
 package com.sosesib.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.postgresql.geometric.PGpoint;
 
 import javax.persistence.Column;
@@ -16,12 +19,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name="location")
+@TypeDef(name = "type", typeClass = PGPointType.class)
 public class Location {
     @Id
     @Column(name="location_id")
     private UUID location_id;
 
     @Column(name="location")
+    @Type(type = "type")
     private PGpoint location;
 
     @Column(name="country")
