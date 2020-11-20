@@ -6,7 +6,7 @@ import com.sosesib.backend.models.entities.TimeSeries;
 import java.util.List;
 
 public interface TimeSeriesService {
-    public List<TimeSeries> getBySensorId(Integer SensorId);
-    public List<Aggregation<Double>> aggregationSum(int aggregationSize, int sensorId);
-    public List<Aggregation<Double>> aggregationProd(int aggregationSize, int sensorId);
+    List<TimeSeries> getBySensorId(Integer SensorId);
+    List<Aggregation<Double>> aggregationSum(int aggregationSize, int sensorId);
+    List<Aggregation<Double>> aggregationProd(int aggregationSize, int sensorId);
 }

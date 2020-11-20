@@ -5,10 +5,7 @@ import com.sosesib.backend.models.entities.Sensor;
 import com.sosesib.backend.models.response.generators.SOSResponseGenerator;
 import com.sosesib.backend.services.SensorService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,23 @@ public class SensorController {
     @GetMapping(value="/all",produces = MediaType.APPLICATION_JSON_VALUE)
     public SOSResponse<List<Sensor>> getAllSensors(){
         return SOSResponseGenerator.GenerateSuccessfulQueryResponse(sensorService.getAllSensors());
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(value="/id/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public SOSResponse<Sensor> getSensorById(@PathVariable Integer id){
+        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(sensorService.getSensorById(id));
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(value="/region/{region}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public SOSResponse<List<Sensor>> findSensorByRegion(@PathVariable String region){
+        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(sensorService.findSensorByRegion(region));
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(value="/city/{city}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public SOSResponse<List<Sensor>> findSensorByCity(@PathVariable String city){
+        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(sensorService.findSensorByCity(city));
     }
 }

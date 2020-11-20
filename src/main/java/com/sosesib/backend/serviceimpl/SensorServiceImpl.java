@@ -20,4 +20,19 @@ public class SensorServiceImpl implements SensorService {
     public List<Sensor> getAllSensors() {
         return sensorRepository.findAll();
     }
+
+    @Override
+    public Sensor getSensorById(Integer sensorId) {
+        return sensorRepository.findBySensorId(sensorId);
+    }
+
+    @Override
+    public List<Sensor> findSensorByRegion(String regionName) {
+        return sensorRepository.findSensorByRegion(regionName);
+    }
+
+    @Override
+    public List<Sensor> findSensorByCity(String city) {
+        return sensorRepository.findSensorByCity(city);
+    }
 }

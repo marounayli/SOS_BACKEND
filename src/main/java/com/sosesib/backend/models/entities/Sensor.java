@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Sensor {
     @Id
     @Column(name="sensor_id")
-    private Integer sensor_id;
+    private Integer sensorId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")

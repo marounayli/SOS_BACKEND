@@ -8,5 +8,6 @@ import java.util.UUID;
 
 public interface TimeSeriesRepository extends CrudRepository<TimeSeries, UUID> {
 
-    public List<TimeSeries> findBySensorId(Integer sensorId);
+     List<TimeSeries> findBySensorId(Integer sensorId);
+
 }
