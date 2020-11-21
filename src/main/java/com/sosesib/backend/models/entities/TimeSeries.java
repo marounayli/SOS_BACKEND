@@ -30,7 +30,7 @@ public class TimeSeries {
     private Integer sensorId;
 
     @Column(name="measurement_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH-mm-ss")
     private LocalDateTime measurementDate;
 
     @Column(name="measurement_value",nullable=false)

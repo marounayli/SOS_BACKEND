@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class Aggregation<X> {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH-mm-ss")
     private LocalDateTime lowDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH-mm-ss")
     private LocalDateTime highDate;
     private X aggregationValue;
 }
