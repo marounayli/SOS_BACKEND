@@ -1,7 +1,7 @@
 package com.sosesib.backend.controllers;
 
 import com.sosesib.backend.models.entities.Measurement;
-import com.sosesib.backend.models.SOSResponse;
+import com.sosesib.backend.models.responses.SOSResponse;
 import com.sosesib.backend.models.response.generators.SOSResponseGenerator;
 import com.sosesib.backend.services.MeasurementService;
 import org.springframework.http.MediaType;

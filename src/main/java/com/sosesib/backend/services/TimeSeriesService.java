@@ -2,16 +2,18 @@ package com.sosesib.backend.services;
 
 import com.sosesib.backend.models.Aggregation;
 import com.sosesib.backend.models.entities.TimeSeries;
+import com.sosesib.backend.models.requests.TimeSeriesRequestWithAggregations;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TimeSeriesService {
-    List<TimeSeries> getBySensorId(Integer SensorId);
-    List<Aggregation<Double>> aggregationSum(int aggregationSize, int sensorId);
-    List<Aggregation<Double>> aggregationProd(int aggregationSize, int sensorId);
-    List<Aggregation<Double>> aggregationMax(int aggregationSize, int sensorId);
-    List<Aggregation<Double>> aggregationMin(int aggregationSize, int sensorId);
-    List<Aggregation<Double>> aggregationAvg(int aggregationSize, int sensorId);
-    List<Aggregation<Double>> aggregationRange(int aggregationSize, int sensorId);
-
+    List<TimeSeries> getTimeSeries(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationSum(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationProd(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationMax(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationMin(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationAvg(TimeSeriesRequestWithAggregations request);
+    List<Aggregation<Double>> aggregationRange(TimeSeriesRequestWithAggregations request);
+    Map<String,List<Aggregation<Double>>> getAggregations(TimeSeriesRequestWithAggregations request);
 }

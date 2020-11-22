@@ -1,13 +1,16 @@
 package com.sosesib.backend.controllers;
 
 import com.sosesib.backend.models.Aggregation;
-import com.sosesib.backend.models.SOSResponse;
-import com.sosesib.backend.models.entities.TimeSeries;
+import com.sosesib.backend.models.responses.SOSResponse;
+import com.sosesib.backend.models.requests.TimeSeriesRequestWithAggregations;
 import com.sosesib.backend.models.response.generators.SOSResponseGenerator;
+import com.sosesib.backend.models.responses.TimeSeriesResponseWithAggregations;
 import com.sosesib.backend.services.TimeSeriesService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/ts")
@@ -20,44 +23,16 @@ public class TimeSeriesController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("")
-    public String Hello(){
-        return "Hello";
+    @PostMapping("/aggregations")
+    public SOSResponse<TimeSeriesResponseWithAggregations> getAggregations(@RequestBody TimeSeriesRequestWithAggregations request){
+        TimeSeriesResponseWithAggregations response = new TimeSeriesResponseWithAggregations();
+        response.setAggregationMap(timeSeriesService.getAggregations(request));
+        response.setOriginal(timeSeriesService.getTimeSeries(request));
+        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(response);
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/sensId/{Id}")
-    public SOSResponse<List<TimeSeries>> getTimeSeriesBySensorId(@PathVariable Integer Id){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.getBySensorId(Id));
-    }
-
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/sum/sensId/{Id}/{size}")
-    public SOSResponse<List<Aggregation<Double>>> getAggregationSum(@PathVariable Integer Id, @PathVariable Integer size){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.aggregationSum(size,Id));
-    }
-
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/max/sensId/{Id}/{size}")
-    public SOSResponse<List<Aggregation<Double>>> getAggregationMax(@PathVariable Integer Id, @PathVariable Integer size){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.aggregationMax(size,Id));
-    }
-
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/min/sensId/{Id}/{size}")
-    public SOSResponse<List<Aggregation<Double>>> getAggregationMin(@PathVariable Integer Id, @PathVariable Integer size){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.aggregationMin(size,Id));
-    }
-
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/avg/sensId/{Id}/{size}")
-    public SOSResponse<List<Aggregation<Double>>> getAggregationAvg(@PathVariable Integer Id, @PathVariable Integer size){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.aggregationAvg(size,Id));
-    }
-
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/range/sensId/{Id}/{size}")
-    public SOSResponse<List<Aggregation<Double>>> getAggregationRange(@PathVariable Integer Id, @PathVariable Integer size){
-        return SOSResponseGenerator.GenerateSuccessfulQueryResponse(timeSeriesService.aggregationRange(size,Id));
+    @GetMapping("/date")
+    public LocalDateTime getLocalDateTime(){
+        return LocalDateTime.now();
     }
 }

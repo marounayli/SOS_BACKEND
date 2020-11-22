@@ -1,4 +1,4 @@
-package com.sosesib.backend.models;
+package com.sosesib.backend.models.responses;
 
 import com.sosesib.backend.models.response.generators.SOSResponseType;
 import lombok.Getter;
