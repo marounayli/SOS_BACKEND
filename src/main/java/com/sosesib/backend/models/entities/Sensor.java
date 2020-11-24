@@ -48,6 +48,12 @@ public class Sensor {
         specification.setSpecification_id(specification_id);
     }
 
+    @Column(name="time_diff")
+    private String timeBetweenTwoMeasurements;
+
     @Column(name="description")
     private String description;
+
+    @Transient
+    private TimeSeries lastMeasurement;
 }

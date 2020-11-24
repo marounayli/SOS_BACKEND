@@ -16,4 +16,6 @@ public interface TimeSeriesRepository extends CrudRepository<TimeSeries, UUID> {
                                      @Param("startDateTime") LocalDateTime startDateTime,
                                      @Param("endDateTime") LocalDateTime endDateTime);
 
+     @Query(value = "SELECT * FROM timeseries WHERE sensor_id = :sensorId ORDER BY measurement_date DESC LIMIT 1",nativeQuery = true)
+     TimeSeries getLatestMeasurement(@Param("sensorId")Integer sensorId);
 }
