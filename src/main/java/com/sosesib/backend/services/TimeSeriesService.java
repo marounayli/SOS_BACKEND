@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface TimeSeriesService {
+    List<TimeSeries> getAllSeriesBySensorId(Integer sensorId);
     List<TimeSeries> getTimeSeries(TimeSeriesRequestWithAggregations request);
     List<Aggregation<Double>> aggregationSum(TimeSeriesRequestWithAggregations request);
     List<Aggregation<Double>> aggregationProd(TimeSeriesRequestWithAggregations request);

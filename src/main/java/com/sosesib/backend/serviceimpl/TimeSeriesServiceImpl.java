@@ -35,6 +35,11 @@ public class TimeSeriesServiceImpl implements TimeSeriesService {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
+    public List<TimeSeries> getAllSeriesBySensorId(Integer sensorId) {
+        return timeSeriesRepository.findBySensorId(sensorId);
+    }
+
+    @Override
     public List<TimeSeries> getTimeSeries(TimeSeriesRequestWithAggregations request) {
         for(int i=0;i<10;++i){
             System.out.println(request.getStartDateTime().format(formatter));
