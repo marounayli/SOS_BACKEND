@@ -77,6 +77,7 @@ public class TimeSeriesController {
         return files;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/downloadZip")
     public void downloadFile(HttpServletResponse response , @RequestBody TimeSeriesRequestWithAggregations request) throws IOException {
 
